@@ -23,45 +23,27 @@
         <div class="cover-container">
           <div class="masthead clearfix">
             <div class="inner">
-              <h3 class="masthead-brand">Notation</h3>
+              <h3 class="masthead-brand">Easy Movie</h3>
               <nav>
                 <ul class="nav masthead-nav">
-                  <li class="active"><a href="{% url 'movies.views.home' %}">Accueil</a></li>
-                  <li><a href="#">Deconnection</a></li>
-                  <li><a href="{% url 'movies.views.aPropos' %}">A propos</a></li> 
+                  <li><a href="{% url 'movies.views.home' %}">Acceuil</a></li>
+                  <li><a href="{% url 'movies.views.home' %}">Deconnection</a></li>
+                  <li><a href="#">A propos</a></li>
                 </ul>
               </nav>
             </div>
           </div>
           <div class="inner cover">
-            <h1 class="cover-heading">Easy Movie</h1>
+            <h1 class="cover-heading">Espace personnel</h1>
 			<legend> </legend>
 				  <div class="row">
-				  	<div class="lead col-md-8"> (titre du film)
-						<a href="#"><img src="http://placehold.it/250x250" class="img-responsive center-block"></a>
-						<div class="controls">
-							<div class="row">
-							</br>
-								<button id="singlebutton" name="singlebutton" class="btn btn-primary" >Clique ici si tu as déjà vu ce film</button>
-							</div>
-						</div>
+				  	<div class="lead col-md-12"> Résultat de la recherche
+					<div class="row">  !-----------!-----------!-----------!------------!---------!---------!----------!--------!--------! </div>
+					<div class="row"> AFFICHER TOUTES LES AFFICHES DES FILMS CORRESPONDANT A LA RECHERCHE</div>
          </div>
-         {% if rel %}
-		 <div class="lead col-md-4"> Noter le film sur 5 (griser la liste s'il n'a pas vu le film)
-		 <FORM>
-			<SELECT name="nom" size="1" class="col-md-12" style="background-color:#2586C7;">				
-				<OPTION>1
-				<OPTION>2
-        <OPTION>3
-        <OPTION>4
-        <OPTION>5
-			</SELECT>
-		</FORM>
-		 </div>
-		 {% endif %}
           <div class="mastfoot">
             <div class="inner">
-              <p>Réalisé par Oreanu  Radu & Cousin Gaetan.</p>
+              <p>Réaliser par Oreanu  Radu & Cousin Gaetan.</p>
             </div>
           </div>
         </div>
