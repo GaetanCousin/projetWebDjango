@@ -37,19 +37,19 @@
             <h1 class="cover-heading">Easy Movie</h1>
 			<legend> </legend>
 				  <div class="row">
-				  	<div class="lead col-md-8"> (titre du film)
+				  	<div name="titre" class="lead col-md-8"> (titre du film)
 						<a href="#"><img src="http://placehold.it/250x250" class="img-responsive center-block"></a>
 						<div class="controls">
 							<div class="row">
 							</br>
-								<button id="singlebutton" name="singlebutton" class="btn btn-primary" >Clique ici si tu as déjà vu ce film</button>
+								<button id="singlebutton" type="submit" name="singlebutton" class="btn btn-primary" >Clique ici si tu as déjà vu ce film</button>
 							</div>
 						</div>
          </div>
          {% if rel %}
 		 <div class="lead col-md-4"> Noter le film sur 5 (griser la liste s'il n'a pas vu le film)
-		 <FORM>
-			<SELECT name="nom" size="1" class="col-md-12" style="background-color:#2586C7;">				
+		 <FORM url="{% static movies.views.notation %}" name="note" method="POST">
+			<SELECT name="note" size="1" class="col-md-12" style="background-color:#2586C7;">				
 				<OPTION>1
 				<OPTION>2
         <OPTION>3
@@ -57,6 +57,8 @@
         <OPTION>5
 			</SELECT>
 		</FORM>
+  </br></br>
+    <button id="singlebutton" type="submit" name="singlebutton" class="btn btn-primary" >Valider</button>
 		 </div>
 		 {% endif %}
           <div class="mastfoot">
