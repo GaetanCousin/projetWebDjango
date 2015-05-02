@@ -1,14 +1,14 @@
 from django.shortcuts import render
-
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate
+from django import forms
 from movies.models import Category, Actor, Producer, Realisator, Movie, MovieState
 from django.contrib.auth.decorators import login_required
-
+from movies.forms import ContactForm
 
 def home(request):
-	#movies = Movie.objects.get(id=1)
 	def get_mark(movie):
-		movies = MovieState.objects.select(movie= movie) # erreur a ce niveau la je ne comprend pas pourquoi, ca fonctionne avec movies = MovieState.objects.all() mais ce n'est pas ce qu'on veut .. :S
+		movies = MovieState.objects.filter(movie=movie) 
 		marks = [x.note for x in movies]
 		return sum(marks)/len(marks) # len = nbr d'element
 	movies = Movie.objects.all()
@@ -28,36 +28,45 @@ def notation(request):
 		return render(request, r"movies/notation.html", {"rel":rel})
 	elif request.POST:
 		user = Movie.object.get(id=1)
-		movie = request.POST['titre']
-		note = request.POST['note']
+		movie = request.POST.get('titre')
+		note = request.POST.get('note')
 		new_rel = MovieState(note=note, user=user, movie=movie)
 		new_rel.save()
 	return render(request, r"movies/notation.html")
 
-def connection(request):    # Plusieurs fois la même fonction juste pour initialiser les views 
-	movies = Movie.objects.get(id=1)
-	return render(request, r"movies/connection.html", {"movies" : movies})
+def connection(request):   # Exemple pour le moment
+    #username = request.POST['username']
+   	#password = request.POST['password']
+   # user = authenticate(username=username, password=password)
+    #if user is not None:
+     #   if user.is_active:
+          #  login(request, user)
+            # Redirect to a success page.
+       # else:
+            # Return a 'disabled account' error message
+           # ...
+   # else:
+        # Return an 'invalid login' error message.
+	return render(request, r"movies/connection.html")
 
 def inscription(request):
-	if request.GET:
-		return render(request, r"movies/inscription.html")
-	elif request.POST:
-		adresse = request.POST['adresse']
-		mdp = request.POST['mdp']
-		new_user = User(username=adresse, mdp=mdp)
-		new_user.save()
-	return render(request, r"movies/inscription.html")
+    # Ici nous pouvons traiter les données du formulaire
+    #nom = request.POST.get('adresse')
+    #mdp = request.POST.get('mdp')
+    user = User.objects.create_user('surname', 'email', 'password')
+    user.save()
+    # Nous pourrions ici envoyer l'e-mail grâce aux données que nous venons de récupérer
+    return render(request, 'movies/inscription.html')
 
 
 
 @login_required
 def reponseRecherche(request):
-	movies = Movie.objects.get(id=1)
-	return render(request, r"movies/reponseRecherche.html", {"movies" : movies})
+	return render(request, r"movies/reponseRecherche.html")
+
 @login_required
 def espacePerso(request):
-	movies = Movie.objects.get(id=1)
-	return render(request, r"movies/espacePerso.html", {"movies" : movies})
+	return render(request, r"movies/espacePerso.html")
 
 def aPropos(request):
 	return render(request, r"movies/aPropos.html")
