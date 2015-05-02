@@ -34,7 +34,7 @@
             </div>
           </div>
           <div class="inner cover">
-            <h1 class="cover-heading">Bienvenue sur Easy Movie !</h1>
+            <h1 class="cover-heading">Bienvenue sur Easy Movie {{topMovies}}!</h1>
             <p class="lead"> Top 5 des films</p>
             <div class="span12">
                 <div class="well">
@@ -44,7 +44,7 @@
                             <div class="carousel-inner onebyone-carosel">
                                 <div class="item active">
                                     <div class="col-md-4">
-                                        <a href="#"><img src="http://placehold.it/250x250" class="img-responsive center-block"></a>
+                                        <a href="#"><img src="{% static 'images/{{movies.id}}.jpg' %}" class="img-responsive center-block"></a>
                                         <div class="text-center">1</div>
                                     </div>
                                 </div>
